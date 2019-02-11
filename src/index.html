@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport content=width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset id="form">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" type="text"></br>
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" type="text"></br>
+      <label for="emailAddress">Email:</label>
+      <input id="emailAddress" type="text"></br>
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" type="text"></br>
+      <label for="birthDay">Date of Birth</label>
+      <input id="birthDay" type="date"></br>
+      <!-- <label for="department">Department:</label>
+      <input id="department" type="text"></br> -->
+      <select name="department" id="department">
+        <option value="Manager">Manager</option>
+        <option value="Sales">Sales</option>
+        <option value="Reception">Reception</option>
+      </select></br></br>
+      <div class = "hmmm">
+      <input id="male" type="radio" name="gender" value="male">Male
+      <input id="female" type="radio" name="gender" value="female">Female</br></br>
+      </div>
+      <label for="supervisor">Supervisor?</label>
+      <input type="checkbox" name="supervisor" id="supervisor"></br>
+      <button id="add-btn">Add Employee</button></br></br>
+    </fieldset>
+
+    <div id="print"></div>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
+
+
+
+<!-- Set up a new project. This project should use Grunt to run http-server and json-server from the same terminal.
+Create a collection (i.e. empty array) in your json-server database file called "employees"
+In your index.html file, create a form. Your form should have input fields where the HR manager can enter information about the new employee. Include the following fields and add more if you like:
+First name
+Last name
+Email address
+Phone number
+Birthday
+Department
+When the user clicks the "Add Employee" button on your form, use the data they entered into the form to build a new employee object in your JavaScript file.
+POST the new employee object to your json-server database.
+When the POST request is complete, get a list of all the employees from the database and print them to the DOM. -->

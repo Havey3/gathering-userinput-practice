@@ -1,0 +1,31 @@
+{
+  "employees": [
+    {
+      "firstName": "Jack",
+      "lastName": "Smith",
+      "email": "jacksmith@gmail.com",
+      "phone": "304-920-3213",
+      "dateOfBirth": "2019-12-31",
+      "department": "Hr department",
+      "id": 1
+    },
+    {
+      "firstName": "Chuck",
+      "lastName": "Taylor",
+      "email": "chuckytaylor32@gmail.com",
+      "phone": "304-989-41232",
+      "dateOfBirth": "2018-12-30",
+      "department": "Reception",
+      "id": 2
+    },
+    {
+      "firstName": "Chuck",
+      "lastName": "Taylor",
+      "email": "chuckytaylor32@gmail.com",
+      "phone": "304-989-41232",
+      "dateOfBirth": "2018-12-30",
+      "department": "Reception",
+      "id": 3
+    }
+  ]
+}
