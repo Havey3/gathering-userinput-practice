@@ -1,3 +1,7 @@
+body{
+    background-color: #FFF0F2;
+    font-family: 'Roboto Condensed', sans-serif;
+}
 input {
     display: flex;
 }
