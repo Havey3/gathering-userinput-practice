@@ -1,3 +1,5 @@
+printAll();
+
 document.querySelector("#add-btn").addEventListener("click", () => {
     const firstName = document.querySelector("#firstName").value
     const lastName = document.querySelector("#lastName").value
@@ -5,8 +7,6 @@ document.querySelector("#add-btn").addEventListener("click", () => {
     const phone = document.querySelector("#phoneNumber").value
     const dob = document.querySelector("#birthDay").value
     const department = document.querySelector("#department").value
-    // const gender = document.querySelector("gender").value
-
     const employees = {
         firstName: firstName,
         lastName: lastName,
@@ -14,47 +14,50 @@ document.querySelector("#add-btn").addEventListener("click", () => {
         phone: phone,
         dateOfBirth: dob,
         department: department,
-        // gender: gender
     }
-
-
-    createTask(employees)
-    printAll()
+    createTask(employees).then(() => {
+        printAll()
+    })
     console.log(employees)
 })
 
-document.querySelector("#supervisor").addEventListener("click", () => {
-    alert("this button is just for looks it doesn't actually do anything =[")
+document.querySelector("body").addEventListener("click", () => {
+    if (event.target.classList.contains("delete-btn")) {
+        const employeesId = event.target.id.split("-")[1];
+        fetchDelete(employeesId)
+            .then(() => {
+                printAll()
+            })
+    } else if (event.target.classList.contains("edit-btn")) {
+        const employeesId = event.target.id.split("-")[1];
+        singleApi(employeesId)
+            .then((editParam) => {
+                document.querySelector(`#employees-${employeesId}`).innerHTML = editForm(editParam)
+            })
+    } else if (event.target.classList.contains("save-btn")) {
+        const employeesId = event.target.id.split("-")[1]
+
+        const editfirst = document.querySelector(`#f-edit-${employeesId}`).value;
+        const editLast = document.querySelector(`#l-edit-${employeesId}`).value;
+        const editEmail = document.querySelector(`#email-edit-${employeesId}`).value;
+        const editPhone = document.querySelector(`#p-edit-${employeesId}`).value;
+        const editDate = document.querySelector(`#dob-edit-${employeesId}`).value;
+        const editDepartment = document.querySelector(`#d-edit-${employeesId}`).value
+
+        const editList = buildEmployee(editfirst, editLast, editEmail, editPhone, editDate, editDepartment);
+        console.log(editList)
+
+        editApi(employeesId, editList)
+        .then(printAll)
+    }
 })
 
-const printFunction = (first, last, email, phone, dob, department) => {
-    return `<li>${first}</li><li>${last}</li><li>${email}</li><li>${phone}</li><li>${dob}</li><li>${department}</li></br>`
-}
-
-const getFromApi = () => {
-    return fetch("http://localhost:8088/employees").then(employees => employees.json());
-}
-
-const printAll = () => {
-    document.querySelector("#print").innerHTML = "";
-    getFromApi()
-    .then(fromApi => {
-        fromApi.forEach(employee => {
-            document.querySelector("#print").innerHTML += printFunction(employee.firstName, employee.lastName, employee.email, employee.phone, employee.dateOfBirth, employee.department, employee.gender)
-        })
-    })
-}
-
-const createTask = employees =>
-    fetch("http://localhost:8088/employees", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(employees)
-    })
 
 
 
 
-// When the POST request is complete, get a list of all the employees from the database and print them to the DOM.
+
+
+
+
+
